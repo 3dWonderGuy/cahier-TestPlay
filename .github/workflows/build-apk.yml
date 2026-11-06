@@ -35,8 +35,10 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
+      - name: Make gradlew executable & fix line endings
+        run: |
+          sed -i 's/\r$//' ./gradlew
+          chmod +x ./gradlew
 
       - name: Build Debug APK
         if: ${{ github.event_name != 'workflow_dispatch' || inputs.build_type == 'debug' || inputs.build_type == 'both' }}

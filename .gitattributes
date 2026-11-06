@@ -1,0 +1,6 @@
+# Force LF line endings for shell scripts
+gradlew text eol=lf
+*.sh text eol=lf
+
+# Auto-detect text files
+* text=auto
